@@ -1,7 +1,8 @@
 
 function renderErrors(errors) {
+	document.getElementById('errors').innerHTML = ''
 	for (var i=0; i < errors.length; i++) {
-		$("#errors").append("<div> &raquo; " + errors[i] + "</div>").show();
+		$("#errors").append("<div> " + errors[i] + "</div>").show();
 	};
 }
 
@@ -9,17 +10,16 @@ function validateForm() {
 	result = true;
 	var errors = [];
 
-	if (document.getElementById("full-name").value == '') {
-		errors.push("Lauks 'Vārs, Uzvārds' ir jānorāda obligāti");
-		result = false;
-	}
-	if (document.getElementById("phone").value == '') {
-		errors.push("Lauks 'Telefona numurs' ir jānorāda obligāti");
-		result = false;
-	}
-	if (document.getElementById("message").value == '') {
-		errors.push("Lauks 'Ziņojums' ir jānorāda obligāti");
-		result = false;
+	var requiredInput = ["name", "phone", "message"];
+	requiredInput.forEach(checkInput);
+
+	function checkInput(item, index) {
+		if (document.getElementById(item).value == '') {
+			var el = document.getElementById(item);
+			var label = el.dataset.label
+			errors.push("Lauks '" + label + "' ir jānorāda obligāti");
+			result = false;
+		}
 	}
 
 	if (errors[0] == undefined) {
@@ -30,6 +30,12 @@ function validateForm() {
 	}
 }
 
-window.onload = function() {
-	null;
-}
+window.addEventListener('DOMContentLoaded', (event) => {
+	var form = document.getElementById("contactForm");
+
+	document.getElementById("submit").addEventListener("click", function () {
+		if (validateForm()) {
+			form.submit();
+		}
+	});
+});

@@ -1,4 +1,4 @@
-h1 {
+h1, h2 {
 	font-family: Lucida Sans Unicode;
 	border-bottom: 1px solid silver;
 	font-weight: normal;
@@ -6,24 +6,21 @@ h1 {
 
 #page-wrapper {
 	width: 500px;
-	position: absolute;
-	top: 40px;
-	left: 50%;
-	margin-left: -250px;
+    margin: 5px auto;
 	padding: 5px;
 	border: 1px solid silver;
 }
 
 #heading {
-	font-size: 24px;
+	font-size: 28px;
 	text-align: center;
 }
 
 #errors {
 	border: 1px solid #777777;
-	padding: 3px;
+	padding: 3px 6px;
 	display: none;
-	color: #EB8282;
+	color: #f35151;
 }
 
 .row {
@@ -32,7 +29,7 @@ h1 {
 	label {
 		display: inline-block;
 		float: left;
-		width: 150px;
+		width: 160px;
 		font-family: Lucida Sans Unicode;
 	}
 
@@ -45,10 +42,15 @@ h1 {
 		padding: 3px;
 		border: 1px solid #777777;
 	}
+	&:last-child {
+		text-align: center;
+	}
 }
 
 textarea {
 	width: 200px;
+    max-width: 330px;
+	height: 50px;
 	padding: 3px;
 	border: 1px solid #777777;
 }
@@ -69,8 +71,18 @@ textarea {
 	text-decoration: none;
 	display: inline-block;
 	font-family: Lucida Sans Unicode;
-	padding: 4px 8px;
+	padding: 4px 24px;
 	background: #7EB87E;
 	border: 1px solid #4D814D;
 }
 
+table {
+	width: 100%;
+
+	th {
+		border: 1px solid black;
+	}
+	td {
+		border-right: 1px solid black;
+	}
+}
