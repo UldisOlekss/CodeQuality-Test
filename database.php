@@ -1,4 +1,5 @@
 <?php
+// Basic database connection
 class Database {
     private static $dbName = 'localdb' ;
     private static $dbHost = 'localhost' ;

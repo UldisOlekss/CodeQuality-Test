@@ -13,7 +13,7 @@
 	  <h1 id="heading">Kontaktforma</h1>
 		<div id="errors"></div>
 		<h2>Lūdzu, ievadiet savus datus</h2>
-		<form action="index.php" method="post" id="contactForm">
+		<form method="post" id="contactForm">
 			<div class="row">
 				<label for="name">Vārds, Uzvārds: <span>*</span></label>
 				<input type="text" name="name" value="" id="name" data-label="Vārds, Uzvārds"/>
@@ -35,6 +35,7 @@
 			</div>
 		</form>
 	</div>
+	<!-- Table for dispalying information already inside database -->
 	<div id="page-wrapper">
 		<table class="table">
             <thead>
@@ -62,6 +63,7 @@
 	        </tbody>
         </table>
 	</div>
+	<!-- Collecting information from global Post, inserting into variables and inserting to database -->
 	<?php
 	    if ( !empty($_POST)) {
 	        $name = $_POST['name'];
@@ -69,15 +71,13 @@
 	        $address = $_POST['address'];
 	        $message = $_POST['message'];
 	        
-	        if (!empty($_POST)) {
-	            $pdo = Database::connect();
-	            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	            $sql = "INSERT INTO localdata (name, phone, address, message) values(?, ?, ?, ?)";
-	            $q = $pdo->prepare($sql);
-	            $q->execute(array($name,$phone,$address,$message));
-	            Database::disconnect();
-	            header("Location: index.php");
-	        }
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "INSERT INTO localdata (name, phone, address, message) values(?, ?, ?, ?)";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($name, $phone, $address, $message));
+            Database::disconnect();
+            header("Location: index.php");
 	    }
 	?>
 </body>
