@@ -13,11 +13,11 @@ function validateForm() {
 		errors.push("Lauks 'Vārs, Uzvārds' ir jānorāda obligāti");
 		result = false;
 	}
-	if (document.getElementById("telefonanr").value == '') {
+	if (document.getElementById("phone").value == '') {
 		errors.push("Lauks 'Telefona numurs' ir jānorāda obligāti");
 		result = false;
 	}
-	if (document.getElementById("zinojums").value == '') {
+	if (document.getElementById("message").value == '') {
 		errors.push("Lauks 'Ziņojums' ir jānorāda obligāti");
 		result = false;
 	}
